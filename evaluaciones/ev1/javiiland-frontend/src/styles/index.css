@@ -1,0 +1,772 @@
+/* ============================================================
+   Javiiland — design tokens
+   Paleta inspirada en carteles de circo/kermés: fondo tinta noche
+   en la cabecera, papel cálido para el contenido, y acentos de
+   caramelo/coral/menta usados con función (disponible/ocupado).
+   ============================================================ */
+:root {
+  --ink: #1c2340;
+  --ink-soft: #454f78;
+  --ink-tint: #eef0f8;
+
+  --paper: #fbfaf5;
+  --paper-raised: #ffffff;
+  --line: #e6e1d4;
+
+  --marigold: #f2a93b;
+  --marigold-dark: #c47f16;
+  --coral: #ee6a55;
+  --coral-dark: #c74a37;
+  --mint: #8fd9b6;
+  --mint-dark: #2b8a5c;
+
+  --radius-s: 6px;
+  --radius-m: 12px;
+  --radius-l: 20px;
+
+  --shadow-card: 0 1px 2px rgba(28, 35, 64, 0.06), 0 8px 24px rgba(28, 35, 64, 0.05);
+
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Manrope', system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  color: var(--ink);
+  line-height: 1.15;
+  margin: 0 0 0.5rem;
+  font-weight: 600;
+}
+
+h1 {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+p {
+  margin: 0 0 1rem;
+  color: var(--ink-soft);
+}
+
+a {
+  color: var(--marigold-dark);
+}
+
+button {
+  font-family: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--marigold);
+  outline-offset: 2px;
+}
+
+.muted {
+  color: var(--ink-soft);
+}
+
+/* ---------- layout shell ---------- */
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-main {
+  flex: 1;
+}
+
+.app-footer {
+  padding: 2rem 1.5rem;
+  text-align: center;
+  color: var(--ink-soft);
+  font-size: 0.875rem;
+  border-top: 1px solid var(--line);
+}
+
+.page {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+}
+
+.page--narrow {
+  max-width: 460px;
+}
+
+.page--center {
+  text-align: center;
+  padding-top: 6rem;
+}
+
+.page__heading {
+  margin-bottom: 2rem;
+}
+
+.page__heading--split {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.page__section {
+  margin-top: 2.5rem;
+}
+
+/* ---------- nav ---------- */
+.nav {
+  background: var(--ink);
+  color: #fff;
+}
+
+.nav__inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.nav__brand-mark {
+  color: var(--marigold);
+  display: inline-flex;
+}
+
+.nav__links {
+  display: flex;
+  gap: 1.5rem;
+  flex: 1;
+  flex-wrap: wrap;
+}
+
+.nav__link {
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  padding: 0.25rem 0;
+  border-bottom: 2px solid transparent;
+}
+
+.nav__link:hover {
+  color: #fff;
+}
+
+.nav__link--active {
+  color: #fff;
+  border-bottom-color: var(--marigold);
+}
+
+.nav__auth {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.nav__user {
+  color: #fff;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.badge {
+  font-size: 0.6875rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.badge--admin {
+  background: var(--marigold);
+  color: var(--ink);
+}
+
+.badge--bloqueo {
+  display: inline-block;
+  margin-bottom: 0.35rem;
+  background: var(--ink-soft);
+  color: var(--paper-raised);
+}
+
+/* ---------- buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.65rem 1.25rem;
+  border-radius: var(--radius-s);
+  border: 1px solid transparent;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.05s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn--primary {
+  background: var(--marigold);
+  color: var(--ink);
+}
+
+.btn--primary:hover {
+  background: var(--marigold-dark);
+  color: #fff;
+}
+
+.btn--ghost {
+  background: transparent;
+  border-color: currentColor;
+  color: inherit;
+}
+
+.nav .btn--ghost {
+  border-color: rgba(255, 255, 255, 0.4);
+  color: #fff;
+}
+
+.nav .btn--ghost:hover {
+  border-color: #fff;
+}
+
+.btn--danger {
+  background: transparent;
+  color: var(--coral-dark);
+  border-color: var(--coral);
+}
+
+.btn--danger:hover {
+  background: var(--coral);
+  color: #fff;
+}
+
+.btn--block {
+  width: 100%;
+}
+
+.btn--small {
+  padding: 0.4rem 0.85rem;
+  font-size: 0.8125rem;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.link-button {
+  background: none;
+  border: none;
+  color: var(--marigold-dark);
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  font-size: 0.875rem;
+}
+
+.icon-button {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--paper-raised);
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-button:hover {
+  border-color: var(--ink);
+}
+
+/* ---------- hero ---------- */
+.hero {
+  padding: 1rem 0 0;
+  max-width: 640px;
+}
+
+.hero__text p {
+  font-size: 1.0625rem;
+}
+
+.hero__cta {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+/* ---------- calendar ---------- */
+.calendario {
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-l);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-card);
+}
+
+.calendario__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.calendario__title {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.calendario__title h2 {
+  margin: 0;
+}
+
+.calendario__year {
+  color: var(--ink-soft);
+  font-weight: 400;
+}
+
+.calendario__nav {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.calendario__legend {
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.25rem;
+  font-size: 0.8125rem;
+  color: var(--ink-soft);
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.legend-dot--free {
+  background: var(--mint);
+}
+
+.legend-dot--taken {
+  background: var(--coral);
+}
+
+.legend-dot--past {
+  background: var(--line);
+}
+
+.calendario__grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.4rem;
+}
+
+.calendario__grid--loading {
+  opacity: 0.5;
+}
+
+.calendario__grid--headings {
+  margin-bottom: 0.5rem;
+}
+
+.calendario__weekday {
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+  letter-spacing: 0.02em;
+}
+
+.calendario__day {
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-s);
+  border: 1px solid var(--line);
+  background: var(--paper);
+  cursor: default;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  position: relative;
+}
+
+.calendario__day--muted {
+  opacity: 0.35;
+}
+
+.calendario__day--free {
+  background: color-mix(in srgb, var(--mint) 30%, white);
+  border-color: var(--mint);
+  color: var(--mint-dark);
+  cursor: pointer;
+}
+
+.calendario__day--free:hover {
+  background: var(--mint);
+  color: #fff;
+}
+
+.calendario__day--taken {
+  background: color-mix(in srgb, var(--coral) 16%, white);
+  border-color: var(--coral);
+  color: var(--coral-dark);
+}
+
+.calendario__day--past {
+  background: var(--paper);
+  color: var(--ink-soft);
+}
+
+.calendario__day--today {
+  box-shadow: 0 0 0 2px var(--ink) inset;
+}
+
+.calendario__day:disabled {
+  cursor: default;
+}
+
+/* ---------- forms ---------- */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.field small {
+  font-weight: 400;
+  color: var(--ink-soft);
+}
+
+.field input,
+.field select,
+.field textarea {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 400;
+  padding: 0.65rem 0.75rem;
+  border-radius: var(--radius-s);
+  border: 1px solid var(--line);
+  background: var(--paper-raised);
+  color: var(--ink);
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: var(--ink);
+}
+
+.field--readonly strong {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.0625rem;
+  text-transform: capitalize;
+}
+
+.field--checkbox {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.field--checkbox input {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.form-error {
+  background: color-mix(in srgb, var(--coral) 12%, white);
+  border: 1px solid var(--coral);
+  color: var(--coral-dark);
+  padding: 0.65rem 0.85rem;
+  border-radius: var(--radius-s);
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+.form-success {
+  background: color-mix(in srgb, var(--mint) 20%, white);
+  border: 1px solid var(--mint);
+  color: var(--mint-dark);
+  padding: 0.65rem 0.85rem;
+  border-radius: var(--radius-s);
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+.form-info {
+  background: var(--ink-tint);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  padding: 0.65rem 0.85rem;
+  border-radius: var(--radius-s);
+  font-size: 0.875rem;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+.card {
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-l);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-card);
+}
+
+/* ---------- auth card ---------- */
+.auth-card {
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-l);
+  padding: 2rem;
+  box-shadow: var(--shadow-card);
+  margin-top: 2rem;
+}
+
+.auth-card__subtitle {
+  margin-top: -0.25rem;
+}
+
+.auth-card__footer {
+  margin: 1.25rem 0 0;
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+/* ---------- reservar layout ---------- */
+.reservar-layout {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+@media (max-width: 860px) {
+  .reservar-layout {
+    grid-template-columns: 1fr;
+  }
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- reserva cards (ticket style) ---------- */
+.reserva-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.reserva-card {
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.reserva-card--cancelled {
+  opacity: 0.6;
+}
+
+.reserva-card--bloqueo {
+  border-style: dashed;
+}
+
+.reserva-card__ticket-notch {
+  height: 4px;
+  background: repeating-linear-gradient(
+    to right,
+    var(--marigold) 0,
+    var(--marigold) 8px,
+    transparent 8px,
+    transparent 16px
+  );
+}
+
+.reserva-card__body {
+  padding: 1.1rem 1.25rem;
+  flex: 1;
+}
+
+.reserva-card__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.reserva-card__date {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+  text-transform: capitalize;
+}
+
+.reserva-card__event {
+  margin: 0 0 0.35rem;
+}
+
+.reserva-card__description {
+  font-size: 0.875rem;
+  margin-bottom: 0.35rem;
+}
+
+.reserva-card__owner {
+  font-size: 0.8125rem;
+  margin: 0;
+}
+
+.reserva-card__footer {
+  padding: 0.85rem 1.25rem;
+  border-top: 1px solid var(--line);
+  display: flex;
+  gap: 0.5rem;
+}
+
+.status {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+}
+
+.status--confirmed {
+  background: color-mix(in srgb, var(--mint) 25%, white);
+  color: var(--mint-dark);
+}
+
+.status--cancelled {
+  background: color-mix(in srgb, var(--coral) 18%, white);
+  color: var(--coral-dark);
+}
+
+/* ---------- misc ---------- */
+.empty-state {
+  border: 1px dashed var(--line);
+  border-radius: var(--radius-m);
+  padding: 2.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.note {
+  font-size: 0.8125rem;
+  margin-top: 1.5rem;
+}
+
+.tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.tab {
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.4rem 1rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+
+.tab--active {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #fff;
+}
+
+.admin-create-form {
+  margin-bottom: 2rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
